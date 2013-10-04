@@ -1,0 +1,34 @@
+---
+- name: installation for Fedora
+  hosts: all
+  tasks:
+  - name: install stuff
+    action: yum name=$item state=latest
+    with_items:
+      - vim-enhanced
+      - zsh
+      - tmux
+      - htop
+      - git
+      - mercurial
+      - ack
+      - vim-enhanced
+      - libxslt-devel
+      - libxml2-devel
+      - pv
+      - nginx
+      - mongodb
+      - rsyslog-elasticsearch
+      - java-1.8.0-openjdk
+      - java-1.8.0-openjdk-devel
+    tags:
+      - packages
+  - name: mongo repo template
+    file: src=files/mongodb.repo dest=/etc/yum.repos.d/10gen-mongo.repo owner=root mode=0644
+  - name: MONGO ALL THE THINGS
+    action: yum name=$item state=latest
+    with_items:
+      - mongo-10gen
+      - mongo-10gen-server
+    tags:
+      - packages
