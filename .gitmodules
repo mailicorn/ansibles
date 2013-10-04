@@ -30,3 +30,7 @@
 	path = cookbooks/mercurial
 	url = https://github.com/opscode-cookbooks/mercurial.git
 	branch = master
+[submodule "cookbooks/mongodb"]
+	path = cookbooks/mongodb
+	url = https://github.com/edelight/chef-mongodb.git
+	branch = master

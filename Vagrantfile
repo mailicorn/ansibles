@@ -17,13 +17,16 @@ Vagrant.configure("2") do |config|
     vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
   end
   config.vm.provision :chef_solo do |chef|
+    chef.node_name = "ryansb-local"
     chef.cookbooks_path = "cookbooks"
+    chef.add_recipe("mongodb::10gen_repo")
     chef.add_recipe("yum")
     chef.add_recipe("vim")
     chef.add_recipe("git")
     chef.add_recipe("mercurial")
     chef.add_recipe("nginx")
     chef.add_recipe("java")
+    chef.add_recipe("mongodb")
     chef.add_recipe("elasticsearch")
     chef.add_recipe("build-essential")
   end
