@@ -1,0 +1,19 @@
+---
+- name: mongo repo template
+  copy: src=files/mongodb.repo dest=/etc/yum.repos.d/10gen-mongo.repo owner=root mode=0644
+  tags:
+    - mongodb
+
+- name: "Install mongo from the 10gen repos"
+  action: yum name=$item state=latest
+  with_items:
+    - mongo-10gen
+    - mongo-10gen-server
+  tags:
+    - packages
+    - mongodb
+
+- name: "Ensure Mongo is running"
+  service: name=${mongodb.service} state=started
+  tags:
+    - mongodb

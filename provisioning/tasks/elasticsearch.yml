@@ -1,0 +1,16 @@
+---
+- name: "Install Elasticsearch dependencies"
+  yum: pkg=${item} state=installed
+  with_items: ${elasticsearch.dependencies}
+  tags:
+    - elasticsearch
+
+- name: "Install Elasticsearch: ${elasticsearch.url}/${elasticsearch.rpm_url}"
+  yum: name=${elasticsearch.url}/${elasticsearch.rpm_url} state=installed
+  tags:
+    - elasticsearch
+
+- name: "Ensure Elasticsearch is running"
+  service: name=${elasticsearch.service} state=started
+  tags:
+    - elasticsearch

@@ -1,0 +1,3 @@
+---
+- name: "Restart Mongodb"
+  service: name=${mongodb.service} state=restarted

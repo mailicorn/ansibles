@@ -1,0 +1,10 @@
+---
+- hosts: elasticsearch
+  vars_files:
+    - vars/elasticsearch.yml
+
+  tasks:
+    - include: tasks/elasticsearch.yml
+
+  handlers:
+    - include: handlers/elasticsearch.yml

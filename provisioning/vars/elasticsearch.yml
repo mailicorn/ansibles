@@ -1,0 +1,19 @@
+---
+elasticsearch:
+  url: http://download.elasticsearch.org/elasticsearch/elasticsearch
+  rpm_url: elasticsearch-0.90.5.noarch.rpm
+  tgz_url: elasticsearch-0.90.5.tar.gz
+  service: elasticsearch
+  dependencies:
+    - java-1.8.0-openjdk
+    - java-1.8.0-openjdk-devel
+  plugin: /usr/share/elasticsearch/bin/plugin
+  config: /etc/elasticsearch/elasticsearch.yml
+
+  plugins:
+    bigdesk:
+      index: /usr/share/elasticsearch/plugins/paramedic/_site/index.html
+      name: lukas-vlcek/bigdesk
+    paramedic:
+      index: /usr/share/elasticsearch/plugins/paramedic/_site/index.html
+      name: karmi/elasticsearch-paramedic

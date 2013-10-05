@@ -19,6 +19,6 @@ Vagrant.configure("2") do |config|
     ansible.node_name = "ryansb-local"
     ansible.sudo = true
     ansible.verbose = true
-    ansible.playbook = "provisioning/playbook.yml"
+    ansible.playbook = "provisioning/all.yml"
   end
 end

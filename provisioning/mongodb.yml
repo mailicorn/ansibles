@@ -1,0 +1,10 @@
+---
+- hosts: mongodb
+  vars_files:
+    - vars/mongodb.yml
+
+  tasks:
+    - include: tasks/mongodb.yml
+
+  handlers:
+    - include: handlers/mongodb.yml
