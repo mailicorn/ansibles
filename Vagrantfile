@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "opscode-f19-64"
   config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode-fedora-19_provisionerless.box"
-  config.vm.network :forwarded_port, guest: 9300, host: 9300, auto_correct: true
+  config.vm.network :forwarded_port, guest: 9200, host: 9200, auto_correct: true
 
   config.vm.provider :virtualbox do |vb|
     vb.gui = false
@@ -20,5 +20,7 @@ Vagrant.configure("2") do |config|
     ansible.sudo = true
     ansible.verbose = true
     ansible.playbook = "provisioning/all.yml"
+    ansible.playbook = "provisioning/mongodb.yml"
+    ansible.playbook = "provisioning/elasticsearch.yml"
   end
 end
