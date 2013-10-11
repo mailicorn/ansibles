@@ -1,6 +1,6 @@
 ---
 - name: Configure mailicorn on Fedora
-  hosts: all
+  hosts: vagrant
   tasks:
   - name: install misc stuff
     action: yum name=$item state=latest

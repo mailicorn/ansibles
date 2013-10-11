@@ -11,9 +11,11 @@ elasticsearch:
   config: /etc/elasticsearch/elasticsearch.yml
 
   plugins:
-    bigdesk:
-      index: /usr/share/elasticsearch/plugins/paramedic/_site/index.html
-      name: lukas-vlcek/bigdesk
-    paramedic:
-      index: /usr/share/elasticsearch/plugins/paramedic/_site/index.html
-      name: karmi/elasticsearch-paramedic
+    enabled:
+      - shortname: bigdesk
+        index: /usr/share/elasticsearch/plugins/paramedic/_site/index.html
+        name: lukas-vlcek/bigdesk
+    disabled:
+      - shortname: paramedic
+        index: /usr/share/elasticsearch/plugins/paramedic/_site/index.html
+        name: karmi/elasticsearch-paramedic

@@ -10,6 +10,13 @@
   tags:
     - elasticsearch
 
+- name: "Install applicable plugins"
+  command: ${elasticsearch.plugin} -install ${item.name} creates=${item.index}
+  with_items:
+    ${elasticsearch.plugins.enabled}
+  tags:
+    - elasticsearch
+
 - name: "Ensure Elasticsearch is running"
   service: name=${elasticsearch.service} state=started
   tags:
